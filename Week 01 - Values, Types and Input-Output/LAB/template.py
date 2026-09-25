@@ -65,3 +65,9 @@ print("=" * 34)
 #    [ ] Run it with a total of 0 and write the error in your journal
 #    [ ] Check every variable name says what it holds
 #    [ ] Show it to the person next to you
+name = "Survey_2026"
+row_loaded = 1187
+rows_expected = 1200
+print(f"Dataset name: {name:>10}")
+print(f"Rows loaded: {row_loaded:>10}")
+print(f"Rows expected: {rows_expected:>10}")
