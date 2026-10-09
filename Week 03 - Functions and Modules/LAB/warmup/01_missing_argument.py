@@ -9,4 +9,4 @@ def status_of(percent, warning_at):
     else:
         return "OK"
 
-print(status_of(95))
+print(status_of(percent=95, warning_at =90))
