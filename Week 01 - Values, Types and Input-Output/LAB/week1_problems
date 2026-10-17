@@ -1,0 +1,264 @@
+# Week 1 – Values, Types and Input/Output – Programming Problems
+
+## Task 1: Questionnaire
+Write a program that asks for name, interest, nationality, course, and programming experience, then prints a formatted summary using escape sequences (`\n`, `\t`).
+
+**Example Output:**
+```
+User Information:
+	Name: Alice
+	Interest: Security
+	Nationality: UK
+	Course: Cyber
+	Experience: Beginner
+```
+name = input("Enter your name: ")
+interest = input("Enter your interest: ")
+nationality = input("Enter your nationality: ")
+course = input("Enter your course: ")
+experience = input("Enter your programming experience: ")
+
+print("\n user information:")
+print("\tName:", name)
+print("\tInterest:", interest)
+print("\tNationality:", nationality)
+print("\tCourse:", course)
+print("\tExperience:", experience)
+
+
+## Task 2: Rectangle Area & Perimeter
+Calculate and print the area and perimeter of a rectangle using fixed values: width = 4.5 and height = 7.9.
+Formulas: `area = width * height`, `perimeter = 2 * (width + height)`.
+
+**Example Output:**
+```
+Area = 35.55
+Perimeter = 24.80
+```
+```
+width = 4.5
+height = 7.9
+
+area = width * height
+perimeter = 2 * (width + height)
+
+print("Area =", area)
+print("Perimeter = %.2f" % perimeter)
+``` 
+
+## Task 3: Convert Pounds to Kilograms
+Ask the user for a value in pounds, convert to kilograms using `1 lb = 0.454 kg`, and print the result.
+
+**Example Output:**
+```
+55.5 pounds is 25.197 kilograms
+```
+```
+pounds = float(input("Enter weight in pounds: "))
+
+kilograms = pounds * 0.454
+
+print(pounds, "pounds is", kilograms, "kilograms")
+```
+## Task 4: Convert Feet to Meters
+Ask the user for a value in feet, convert to meters using `1 ft = 0.305 m`, and print the result.
+
+**Example Output:**
+```
+16.5 feet is 5.0325 meters
+```
+
+feet = float(input("Enter length in feet: "))
+
+meters = feet * 0.305
+
+print(feet, "feet is", meters, "meters")
+
+## Quick Check (no code submission)
+- What data type does `input()` return? Use `type(input("x"))` to verify.
+- Show one example of an escape sequence in `print()`.
+- What is the difference between `/` and `//`? Provide a one-line example for each.
+
+## Task 5: Total Time to Watch a Series
+Compute total viewing time (no breaks) for a series:
+- 5 seasons, 10 episodes per season
+- Season 1: 45 minutes 35 seconds per episode
+- Seasons 2–5: 35 minutes 15 seconds per episode
+
+Display the total as hours, minutes, and seconds.
+
+**Example Output:**
+```
+Total time: 39h 30m 0s
+```
+
+seasons = 5
+episodes = 10
+
+season1_seconds = episodes * (45 * 60 + 35)
+other_seasons_seconds = 4 * episodes * (35 * 60 + 15)
+
+total_seconds = season1_seconds + other_seasons_seconds
+
+hours = total_seconds // 3600
+minutes = (total_seconds % 3600) // 60
+seconds = total_seconds % 60
+
+print(f"Total time: {hours}h {minutes}m {seconds}s")
+
+
+## Task 6: Savings Projection (3 Years)
+Compute final savings after 3 years given:
+- Save £10 every week for 3 years
+- Year 1 bonus: +£20 each week
+- Every 2 weeks: −£0.50 (sister)
+
+Assume 52 weeks per year; use arithmetic and augmented assignment; no conditionals.
+
+**Example Output:**
+```
+Final savings after 3 years: £4689.50
+```
+savings = 0
+
+weekly_saving = 10
+year1_bonus = 20
+sister_deduction = 0.50
+
+# year1
+savings += 52 * weekly_saving
+savings += 52 * year1_bonus
+savings -= 26 * sister_deduction
+
+# year2,3
+savings += 104 * weekly_saving
+savings -= 104 / 2 * sister_deduction
+
+print(f"Final savings after 3 years: £{savings:.2f}")
+
+## Task 7: Cyber: HTTP Log Composer
+Ask for IP, method, path, status, and bytes, then print a single combined log line (Apache-style).
+
+**Example Output:**
+```
+192.168.1.10 - "POST /auth" 401 512
+```
+ip = input("Enter IP address: ")
+method = input("Enter HTTP method: ")
+path = input("Enter path: ")
+status = input("Enter status code: ")
+bytes_sent = input("Enter bytes sent: ")
+
+print(f'{ip} - "{method} {path}" {status} {bytes_sent}')
+
+## Task 8: Pure Python EDA: Dataset Metadata
+Ask for dataset name, rows, and columns. Print:
+- dataset name in quotes
+- rows and columns
+- total cells (rows × columns)
+
+**Example Output:**
+```
+"sales.csv"
+Rows: 120
+Columns: 8
+Cells: 960
+```
+dataset = input("Enter dataset name: ")
+rows = int(input("Enter number of rows: "))
+columns = int(input("Enter number of columns: "))
+
+cells = rows * columns
+
+print(f'"{dataset}"')
+print("Rows:", rows)
+print("Columns:", columns)
+print("Cells:", cells)
+
+## Task 9: IT: INI-style Config Printer
+Ask for three `key=value` pairs (via separate prompts) and print them as an INI block with indentation.
+
+**Example Output:**
+```
+[config]
+	max_connections = 200
+	timeout = 30
+	region = eu-west-2
+```
+key1 = input("Enter first key=value pair: ")
+key2 = input("Enter second key=value pair: ")
+key3 = input("Enter third key=value pair: ")
+
+print("[config]")
+print("\t" + key1)
+print("\t" + key2)
+print("\t" + key3)
+
+## Task 10: Sum of First n Integers
+Ask for a positive integer `n` and compute the sum `n*(n+1)//2`. Print the result.
+
+**Example Output:**
+```
+Sum of 1..10 = 55
+```
+n = int(input("Enter a positive integer: "))
+
+total = n * (n + 1) // 2
+
+print(f"Sum of 1..{n} = {total}")
+
+## Task 11: Population Projection (5 Years)
+Assume current population is 312032486 and 1 year = 365 days.
+Rates: birth every 7s, death every 13s, immigrant every 45s.
+Compute projected population for each of the next 5 years using integer division (`//`).
+
+**Example Output:**
+```
+Year 1: 315,xxx,xxx
+...
+Year 5: ...
+```
+population = 312032486
+
+seconds_per_year = 365 * 24 * 60 * 60
+
+births = seconds_per_year // 7
+deaths = seconds_per_year // 13
+immigrants = seconds_per_year // 45
+
+yearly_change = births - deaths + immigrants
+
+for year in range(1, 6):
+    population += yearly_change
+    print(f"Year {year}: {population:,}")
+*Optional hint:* Compute yearly net change once; then add each year.
+
+## Task 12: Payroll Statement
+Ask for: employee name, hours worked, hourly rate, federal tax rate, state tax rate.
+Print a formatted payroll slip with gross pay, each deduction, and net pay (2 d.p.).
+
+**Example Output:**
+```
+Employee: Smith
+Gross pay: £97.50
+Federal withholding: £19.50
+State withholding: £8.78
+Net pay: £69.22
+```
+name = input("Enter employee name: ")
+hours = float(input("Enter hours worked: "))
+rate = float(input("Enter hourly rate: "))
+federal_rate = float(input("Enter federal tax rate (e.g. 20 for 20%): "))
+state_rate = float(input("Enter state tax rate (e.g. 9 for 9%): "))
+
+gross_pay = hours * rate
+federal_tax = gross_pay * federal_rate / 100
+state_tax = gross_pay * state_rate / 100
+net_pay = gross_pay - federal_tax - state_tax
+
+print("\nPayroll Statement")
+print("Employee:", name)
+print(f"Gross pay: £{gross_pay:.2f}")
+print(f"Federal withholding: £{federal_tax:.2f}")
+print(f"State withholding: £{state_tax:.2f}")
+print(f"Net pay: £{net_pay:.2f}")
